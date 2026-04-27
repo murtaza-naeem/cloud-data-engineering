@@ -8,7 +8,7 @@ Version: 1.0
 --------------------------------------------------------------------
 */
 
-use BikeStore;
+use BikeStores;
 
 SET IDENTITY_INSERT production.brands ON;  
 
