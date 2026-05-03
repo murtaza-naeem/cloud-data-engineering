@@ -15,6 +15,8 @@
 
 -- Write your query below:
 
+SELECT  first_name,last_name,city,phone FROM sales.customers
+WHERE state = 'CA' AND phone  != 'NULL';
 
 
 
@@ -28,8 +30,13 @@
 
 -- Write your query below:
 
-
-
+SELECT 
+    product_id, 
+    product_name, 
+    model_year, 
+    list_price 
+FROM production.products
+ORDER BY model_year DESC, list_price ASC;
 
 -- ============================================================
 --  Question 3 — TOP N & TOP PERCENT
@@ -40,12 +47,18 @@
 --     count as a comment in your answer.
 -- ============================================================
 
--- Part a:
-
+--- Part a:
+SELECT TOP 5 
+    product_name, 
+    list_price 
+FROM production.products
+ORDER BY list_price DESC;
 
 -- Part b:
-
-
+SELECT TOP 5 PERCENT * 
+FROM production.products
+ORDER BY list_price ASC;
+-- Row count: Ye query 16 rows return karegi (Total 315 products ka 5% almost 15.75 hota hai).
 
 
 -- ============================================================
@@ -59,14 +72,22 @@
 -- ============================================================
 
 -- Page 1:
-
+SELECT product_name, list_price 
+FROM production.products
+ORDER BY list_price DESC
+OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY;
 
 -- Page 2:
-
+SELECT product_name, list_price 
+FROM production.products
+ORDER BY list_price DESC
+OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;
 
 -- Page 3:
-
-
+SELECT product_name, list_price 
+FROM production.products
+ORDER BY list_price DESC
+OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY;
 
 
 -- ============================================================
@@ -81,13 +102,19 @@
 -- ============================================================
 
 -- Part a:
-
+SELECT DISTINCT state 
+FROM sales.customers
+ORDER BY state ASC;
 
 -- Part b:
-
+SELECT DISTINCT state, city 
+FROM sales.customers
+ORDER BY state, city;
 
 -- Part c:
-
+SELECT DISTINCT model_year 
+FROM production.products;
+-- Result: 3 unique years (2016, 2017, 2018, 2019 etc. - total count depend karta hai data par).
 
 
 
@@ -103,3 +130,14 @@
 -- ============================================================
 
 -- Write your query below:
+
+SELECT 
+    product_id, 
+    product_name, 
+    brand_id, 
+    category_id, 
+    list_price 
+FROM production.products
+WHERE (list_price >= 500 AND list_price <= 1500)
+  AND (model_year = 2019 OR model_year = 2020)
+ORDER BY list_price ASC;

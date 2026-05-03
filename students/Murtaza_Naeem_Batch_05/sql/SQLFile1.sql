@@ -210,3 +210,25 @@ SELECT TOP 3 product_name, list_price, model_year FROM production.products
 WHERE model_year != 2018
 ORDER BY list_price DESC;
 
+-- 2/5/2026
+
+--like 
+
+select customer_id, first_name, last_name from sales.customers
+where first_name like 'A%'
+order by first_name;
+
+
+select customer_id, first_name, last_name from sales.customers
+where first_name not like 'a%'
+order by first_name;
+
+
+select customer_id, first_name, last_name from sales.customers
+where first_name like 't%n'
+order by first_name;
+
+select customer_id, first_name, last_name from sales.customers
+where first_name like '_n%'
+order by first_name;
+
