@@ -16,6 +16,8 @@
 -- Write your query below:
 
 
+
+
 -- ============================================================
 --  Question 2 — ORDER BY (Multiple Columns)
 --  Fetch the product_id, product_name, model_year, and
@@ -27,6 +29,8 @@
 -- Write your query below:
 
 
+
+
 -- ============================================================
 --  Question 3 — TOP N & TOP PERCENT
 --  a) Return the top 5 most expensive products showing only
@@ -36,9 +40,13 @@
 --     count as a comment in your answer.
 -- ============================================================
 
---- Part a:
+-- Part a:
+
 
 -- Part b:
+
+
+
 
 -- ============================================================
 --  Question 4 — OFFSET & FETCH (Pagination)
@@ -52,9 +60,14 @@
 
 -- Page 1:
 
+
 -- Page 2:
 
+
 -- Page 3:
+
+
+
 
 -- ============================================================
 --  Question 5 — DISTINCT
@@ -69,9 +82,14 @@
 
 -- Part a:
 
+
 -- Part b:
 
+
 -- Part c:
+
+
+
 
 -- ============================================================
 --  Question 6 — Logical Operators (AND / OR)
