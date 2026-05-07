@@ -136,8 +136,10 @@ SELECT
     product_name, 
     brand_id, 
     category_id, 
-    list_price 
+    list_price,
+    model_year
 FROM production.products
 WHERE (list_price >= 500 AND list_price <= 1500)
   AND (model_year = 2019 OR model_year = 2020)
 ORDER BY list_price ASC;
+-- NO RESULT FOUND
