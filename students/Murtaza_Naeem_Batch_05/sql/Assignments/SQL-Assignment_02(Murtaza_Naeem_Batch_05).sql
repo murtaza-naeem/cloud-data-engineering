@@ -1,10 +1,17 @@
 -- ============================================================
+--  ASSIGNMENT 02 — Joins
+--  Database : BikeStores
+-- ============================================================
+
+
+-- ============================================================
 --  Question 1
 --  Retrieve the product_name, list_price, and category_name
 --  for every product.
 --  Use production.products and production.categories.
 --  Sort the results by product_name ascending.
 -- ============================================================
+
 SELECT 
     p.product_name, 
     p.list_price, 
@@ -22,6 +29,7 @@ ORDER BY p.product_name ASC;
 --  Use sales.customers and sales.orders.
 --  Sort by order_date descending.
 -- ============================================================
+
 SELECT 
     (c.first_name + ' ' + c.last_name) AS full_name, 
     o.order_id, 
@@ -40,6 +48,7 @@ ORDER BY o.order_date DESC;
 --  and production.brands.
 --  Sort by brand_name then product_name (both ascending).
 -- ============================================================
+
 SELECT 
     p.product_name, 
     p.list_price, 
@@ -60,6 +69,7 @@ ORDER BY b.brand_name, p.product_name;
 --  Use production.products and sales.order_items.
 --  Sort by order_id ascending.
 -- ============================================================
+
 SELECT 
     p.product_name, 
     oi.order_id, 
@@ -77,6 +87,7 @@ ORDER BY oi.order_id ASC;
 --  ordered.
 --  Display only product_id and product_name.
 -- ============================================================
+
 SELECT 
     p.product_id, 
     p.product_name
@@ -95,6 +106,7 @@ WHERE oi.order_id IS NULL;
 --  no orders yet.
 --  Use sales.orders and sales.stores.
 -- ============================================================
+
 SELECT 
     s.store_name, 
     s.store_id, 
@@ -114,6 +126,7 @@ LEFT JOIN sales.orders o
 --  Use only the sales.staffs table.
 --  Staff who have no manager should NOT appear in the result.
 -- ============================================================
+
 SELECT 
     (s.first_name + ' ' + s.last_name) AS staff_name,
     (m.first_name + ' ' + m.last_name) AS manager_name
@@ -131,6 +144,7 @@ INNER JOIN sales.staffs m
 --  How many total rows do you expect?
 --  Write the expected count as a comment next to your query.
 -- ============================================================
+
 SELECT 
     s.store_name, 
     b.brand_name
@@ -148,6 +162,7 @@ CROSS JOIN production.brands b;
 --  and production.products.
 --  Sort by order_date ascending, then full_name ascending.
 -- ============================================================
+
 SELECT 
     (c.first_name + ' ' + c.last_name) AS full_name,
     o.order_id,
