@@ -117,14 +117,23 @@ group by
 having
 	AVG(list_price) > 1500;
 
-
-
 -- Q8.
 -- Find customers who placed at least 2 orders in the year 2017.
 -- Show customer_id, order_year, and order_count.
 
-
-
+select 
+	customer_id,
+	year(order_date) as order_year,
+	count(order_id) as order_count
+from
+	sales.orders
+where
+	order_date between '20170101' AND '20171231'
+group by
+	customer_id,
+	year(order_date)
+having
+	count(order_id) >= 2;
 
 -- ============================================================
 --  SECTION C — SUBQUERIES
@@ -135,6 +144,19 @@ having
 -- Use a subquery to get the customer_ids first.
 -- Show all columns from sales.orders.
 
+select 
+	*
+from 
+	sales.orders
+where 
+	customer_id in (
+	select 
+		customer_id
+	from
+		sales.customers
+	where
+		city = 'Houston'
+	)
 
 
 -- Q10.
@@ -142,6 +164,18 @@ having
 -- AVERAGE list_price of ALL products.
 -- Show product_name and list_price.
 
+select 
+	product_name,
+	list_price
+from
+	production.products
+where 
+	list_price > (
+	select 
+		AVG(list_price)
+	from
+		production.products
+	)
 
 
 -- Q11.
@@ -149,14 +183,35 @@ having
 -- or 'Road Bikes'. Use a subquery on production.categories.
 -- Show product_name and list_price.
 
-
+select 
+	product_name, list_price
+from
+	production.products
+where category_id in (
+	select
+		category_id
+	from 
+		production.categories
+	where	
+		category_name in ('Mountain Bikes' , 'Road Bikes')
+)
 
 -- Q12.
 -- Find all customers who have NEVER placed an order.
 -- Show customer_id, first_name, and last_name.
 -- (Hint: use NOT IN with a subquery on sales.orders)
 
-
+select 
+	customer_id, first_name, last_name
+from
+	sales.customers
+where
+	customer_id not in (
+	select 
+		distinct customer_id
+	from
+		sales.orders
+	)
 
 -- ============================================================
 --  SECTION D — JOINs WITH GROUP BY
