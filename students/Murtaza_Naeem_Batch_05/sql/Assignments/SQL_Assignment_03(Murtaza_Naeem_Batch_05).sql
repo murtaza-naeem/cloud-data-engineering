@@ -74,7 +74,7 @@ group by
 -- (Hint: use YEAR(order_date))
 
 select 
-	count(order_id) as total_year,
+	count(order_id) as total_orders,
 	YEAR(order_date) as order_year
 from
 	sales.orders
@@ -91,6 +91,16 @@ order by
 -- Find customers who have placed MORE than 5 orders in total.
 -- Show customer_id and order_count.
 
+select 
+	customer_id,
+	count(order_id) as order_count
+from 
+	sales.orders
+group by 
+	customer_id
+having
+	count(order_id) > 2;
+--(No customer had ordered more than three order, so I Replaced the conditon by More than 2 orders (check) )
 
 
 -- Q7.
