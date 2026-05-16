@@ -15,13 +15,28 @@
 -- Show customer_id and order_count.
 -- Sort by order_count descending.
 
+SELECT 
+	customer_id, 
+	COUNT(order_id) AS order_count
+FROM 
+	sales.orders
+GROUP BY 
+	customer_id
+ORDER BY
+	order_count DESC;
 
 
 -- Q2.
 -- For each store, find the total number of orders placed.
 -- Show store_id and total_orders.
 
-
+SELECT 
+	store_id,
+	COUNT(order_id) AS total_orders
+FROM 
+	sales.orders
+GROUP BY 
+	store_id;
 
 -- Q3.
 -- Calculate the net revenue per order.
@@ -29,21 +44,44 @@
 -- Show order_id and net_revenue, sorted by net_revenue descending.
 -- (Hint: use sales.order_items)
 
-
+select 
+	order_id,
+	SUM( quantity * list_price * (1 - discount) ) as net_revenue
+from 
+	sales.order_items
+group by
+	order_id
+order by
+	net_revenue desc;
+	
 
 -- Q4.
 -- Find the average list price of products in each category.
 -- Show category_id and avg_price (rounded to 2 decimal places).
 -- (Hint: use ROUND())
 
-
+select
+	category_id,
+	ROUND(AVG(list_price), 2) as avg_price
+from 
+	production.products
+group by 
+	category_id;
 
 -- Q5.
 -- Find the total number of orders placed in each year.
 -- Show order_year and total_orders, sorted by order_year.
 -- (Hint: use YEAR(order_date))
 
-
+select 
+	count(order_id) as total_year,
+	YEAR(order_date) as order_year
+from
+	sales.orders
+group by 
+	year(order_date)
+order by
+	order_year asc;
 
 -- ============================================================
 --  SECTION B — HAVING CLAUSE
