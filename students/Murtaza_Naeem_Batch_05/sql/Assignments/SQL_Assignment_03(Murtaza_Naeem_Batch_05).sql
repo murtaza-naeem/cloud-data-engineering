@@ -107,11 +107,22 @@ having
 -- Find categories where the AVERAGE list price is greater than $1,500.
 -- Show category_id and avg_price.
 
+select 
+	AVG(list_price) as avg_price,
+	category_id
+from
+	production.products
+group by 
+	category_id
+having
+	AVG(list_price) > 1500;
+
 
 
 -- Q8.
 -- Find customers who placed at least 2 orders in the year 2017.
 -- Show customer_id, order_year, and order_count.
+
 
 
 
