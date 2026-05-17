@@ -222,7 +222,17 @@ where
 -- Join sales.orders with sales.customers.
 -- Show city and total_orders, sorted by total_orders descending.
 
-
+SELECT 
+    c.city,
+    COUNT(o.order_id) AS total_orders
+FROM 
+    sales.orders o
+INNER JOIN 
+    sales.customers c ON o.customer_id = c.customer_id
+GROUP BY 
+    c.city
+ORDER BY 
+    total_orders DESC;
 
 -- Q14.
 -- For each staff member, count how many orders they handled.
@@ -230,7 +240,19 @@ where
 -- Show staff full name (first_name + ' ' + last_name) as staff_name
 -- and order_count, sorted by order_count descending.
 
-
+SELECT 
+    s.first_name + ' ' + s.last_name AS staff_name,
+    COUNT(o.order_id) AS order_count
+FROM 
+    sales.orders o
+INNER JOIN 
+    sales.staffs s ON o.staff_id = s.staff_id
+GROUP BY 
+    s.staff_id,
+    s.first_name,
+    s.last_name
+ORDER BY 
+    order_count DESC;
 
 -- Q15. (BONUS — Multi-concept)
 -- Find customers who have spent more than $10,000 in total.
@@ -239,7 +261,23 @@ where
 -- Sort by total_spent descending.
 -- (Hint: JOIN + GROUP BY + HAVING)
 
-
+SELECT 
+    c.first_name + ' ' + c.last_name AS customer_name,
+    ROUND(SUM(i.quantity * i.list_price * (1 - i.discount)), 2) AS total_spent
+FROM 
+    sales.customers c
+INNER JOIN 
+    sales.orders o ON c.customer_id = o.customer_id
+INNER JOIN 
+    sales.order_items i ON o.order_id = i.order_id
+GROUP BY 
+    c.customer_id,
+    c.first_name,
+    c.last_name
+HAVING 
+    SUM(i.quantity * i.list_price * (1 - i.discount)) > 10000
+ORDER BY 
+    total_spent DESC;
 
 -- ============================================================
 --  END OF ASSIGNMENT 03
