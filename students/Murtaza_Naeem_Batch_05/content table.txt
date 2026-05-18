@@ -1,0 +1,57 @@
+===========================Setion 01 SQL========================================
+
+T-SQL Class 01 Topics (Pointers):
+
+CREATE DATABASE — Naya database create karna.
+
+SELECT (Basic Queries) — Tables se data retrieve/fetch karna.
+
+WHERE Clause — Conditions apply karke rows ko filter karna.
+
+ORDER BY — Data ko Ascending (A-Z) ya Descending (Z-A) order me sort karna.
+
+TOP N / TOP PERCENT — Result set me se specific number of rows ya percentage limit karna.
+
+OFFSET & FETCH — Rows ko skip karke next data lane ke liye (Pagination/Paging).
+
+DISTINCT — Duplicate values ko khatam karke unique data nikalna.
+
+Logical Operators (AND / OR) — Multiple conditions ko combine karna aur brackets () ka sahi use.
+
+================================================================================
+
+T-SQL Class 02 Topic Pointers:
+
+IN / NOT IN Operators — Longe OR conditions ka shortcut aur list validation.
+
+BETWEEN / NOT BETWEEN — Numbers aur Dates ki ranges filter karna.
+
+Column & Table Aliases (AS) — Output headers ko temporary custom naam dena.
+
+String Concatenation (+) — First name aur Last name ko jorh kar Full Name banana.
+
+LIKE Operator & Wildcards — Advanced text search (% for multiple, _ for single character).
+
+Schema & Table DDL/DML — hr schema, identity primary keys, aur dummy data insert karna.
+
+INNER JOIN Basics — Do tables me se sirf common matching records nikalna.
+
+Multi-Table INNER JOIN — 3 ya us se zyada tables (Products + Categories + Brands) ko ek sath connect karna.
+
+================================================================================
+
+T-SQL Class 03 Topic Pointers:
+
+LEFT JOIN — Left table ka saara data lana aur un-matched right records par NULL dikhana.
+
+RIGHT JOIN — Right table ka saara data lana aur un-matched left records par NULL dikhana.
+
+FULL JOIN — Dono tables ka complete data combine karna (matched + unmatched with NULLs).
+
+Multi-Table Outer Joins — 3 tables ko sequence me LEFT JOIN karna (products $\rightarrow$ order_items $\rightarrow$ orders).
+
+CROSS JOIN — Bina condition ke do tables ka Cartesian Product (Multiplication) nikalna.
+
+SELF JOIN — Ek hi table ko unique aliases de kar apne aap se join karna (Hierarchy/Pairing ke liye).
+
+Self Join Logic (> / <) — Self join me duplicate combinations/pairs ko filter out karne ka tarika.
